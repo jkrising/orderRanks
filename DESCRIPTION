@@ -1,0 +1,31 @@
+Package: orderRanks
+Title: Order-Theoretic Methods for Rank Estimation
+Version: 1.0.0
+Date: 2023-06-13
+Authors@R: 
+    person(given = 'Justin', family = 'Rising', email = 'jkrising@gmail.com',
+           role = c('aut', 'cre'), comment = c(ORCID = '0000-0002-4595-7514'))
+Maintainer: Justin Rising <jkrising@gmail.com>
+Description: Provides methods associated with the paper "An Order-Theoretic Perspective on Rank Estimation" (doi:10.13140/RG.2.2.22519.19368).
+License: MIT + file LICENSE
+Encoding: UTF-8
+RdMacros: Rdpack
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+SystemRequirements: GNU
+LinkingTo: 
+    BH,
+    cpp11,
+    Rcpp,
+    testthat
+Depends:
+    R (>= 4.2)
+Imports:
+    Rcpp,
+    Rdpack (>= 2.1)
+Suggests: 
+    ggplot2,
+    testthat (>= 3.0.0),
+    xml2
+Config/testthat/edition: 3
+LazyData: true

@@ -1,0 +1,8 @@
+
+bibentry(bibtype = "Manual",
+         key = "rising:2023",
+         title = "orderRanks: Order-Theoretic Methods for Rank Estimation",
+         author = person(given = "Justin",
+                         family = "Rising"),
+         year = "2023",
+         note = "R package version 0.9.0.0000")
