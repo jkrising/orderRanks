@@ -46,35 +46,12 @@ test_that('isCompatible is correct for improper', {
 test_that('isCompatible is correct for integers', {
   intervals <- integers()
 
-  expect_true(isCompatible(c(1, 2, 3, 4), intervals))
-  expect_true(isCompatible(c(1, 3, 2, 4), intervals))
-  expect_true(isCompatible(c(2, 1, 3, 4), intervals))
-  expect_true(isCompatible(c(1, 1, 3, 4), intervals))
-  expect_true(isCompatible(c(1, 2, 2, 4), intervals))
-
-  expect_false(isCompatible(c(1, 2, 4, 3), intervals))
-  expect_false(isCompatible(c(1, 3, 4, 2), intervals))
-  expect_false(isCompatible(c(1, 4, 2, 3), intervals))
-  expect_false(isCompatible(c(1, 4, 3, 2), intervals))
-  expect_false(isCompatible(c(2, 1, 4, 3), intervals))
-  expect_false(isCompatible(c(2, 3, 1, 4), intervals))
-  expect_false(isCompatible(c(2, 3, 4, 1), intervals))
-  expect_false(isCompatible(c(2, 4, 1, 3), intervals))
-  expect_false(isCompatible(c(2, 4, 3, 1), intervals))
-  expect_false(isCompatible(c(3, 1, 2, 4), intervals))
-  expect_false(isCompatible(c(3, 1, 4, 2), intervals))
-  expect_false(isCompatible(c(3, 2, 1, 4), intervals))
-  expect_false(isCompatible(c(3, 2, 4, 1), intervals))
-  expect_false(isCompatible(c(3, 4, 1, 2), intervals))
-  expect_false(isCompatible(c(3, 4, 2, 1), intervals))
-  expect_false(isCompatible(c(4, 1, 2, 3), intervals))
-  expect_false(isCompatible(c(4, 1, 3, 2), intervals))
-  expect_false(isCompatible(c(4, 2, 1, 3), intervals))
-  expect_false(isCompatible(c(4, 2, 3, 1), intervals))
-  expect_false(isCompatible(c(4, 3, 1, 2), intervals))
-  expect_false(isCompatible(c(4, 3, 2, 1), intervals))
-  expect_false(isCompatible(c(1, 3, 1, 4), intervals))
-  expect_false(isCompatible(c(2, 1, 3, 3), intervals))
+  perms <- arrangements::permutations(nrow(intervals))
+  for (i in 1:nrow(perms))
+  {
+    expect_equal(isCompatible(perms[i, ], intervals),
+                 isCompatible.naive(perms[i, ], intervals))
+  }
 })
 
 test_that('isCompatible is correct for linear', {
@@ -87,13 +64,12 @@ test_that('isCompatible is correct for linear', {
 test_that('isCompatible is correct for simple intervals', {
   intervals <- simple()
 
-  expect_true(isCompatible(c(1, 2, 3), intervals))
-  expect_true(isCompatible(c(1, 3, 2), intervals))
-  expect_true(isCompatible(c(2, 1, 3), intervals))
-
-  expect_false(isCompatible(c(2, 3, 1), intervals))
-  expect_false(isCompatible(c(3, 1, 2), intervals))
-  expect_false(isCompatible(c(3, 2, 1), intervals))
+  perms <- arrangements::permutations(nrow(intervals))
+  for (i in 1:nrow(perms))
+  {
+    expect_equal(isCompatible(perms[i, ], intervals),
+                 isCompatible.naive(perms[i, ], intervals))
+  }
 })
 
 test_that('isCompatible is correct for weak1', {
